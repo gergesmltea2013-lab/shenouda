@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>كابتن شنودة شهدي - توصيل سريع بالموتوسيكل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #060d1f;
+      --navy-900: #0b1736;
+      --navy-800: #11224d;
+      --navy-700: #183068;
+      --gold-400: #f6c453;
+      --gold-500: #e5a928;
+      --gold-100: #fff5d6;
+      --teal-400: #2dd4bf;
+      --teal-500: #14b8a6;
+      --green-500: #22c55e;
+      --red-500: #ef4444;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(6, 13, 31, 0.06);
+      --shadow-md: 0 8px 24px rgba(6, 13, 31, 0.12);
+      --shadow-lg: 0 16px 36px rgba(6, 13, 31, 0.22);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-800) 55%, #0e2942 100%);
+      min-height: 100vh;
+      color: var(--slate-800);
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: var(--slate-50);
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .top-header {
+      background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 75%, var(--navy-700) 100%);
+      color: var(--white);
+      padding: 20px 18px 24px;
+      border-bottom-left-radius: 26px;
+      border-bottom-right-radius: 26px;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .top-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-400), var(--teal-400), transparent);
+      opacity: 0.75;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-identity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .moto-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(246, 196, 83, 0.2), rgba(45, 212, 191, 0.16));
+      border: 1.5px solid rgba(246, 196, 83, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .brand-title span {
+      color: var(--gold-400);
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green-500);
+      box-shadow: 0 0 8px var(--green-500);
+    }
+
+    .status-pill.busy .status-dot {
+      background: var(--red-500);
+      box-shadow: 0 0 8px var(--red-500);
+    }
+
+    .welcome-banner {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(246, 196, 83, 0.28);
+      border-radius: var(--radius-md);
+      padding: 10px 13px;
+      font-size: 12.5px;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .welcome-banner strong {
+      color: var(--gold-400);
+    }
+
+    .nav-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 14px 16px 6px;
+    }
+
+    .nav-tab {
+      border: 1.5px solid var(--slate-200);
+      background: var(--white);
+      color: var(--slate-600);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 11px 12px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-tab.active {
+      background: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+      box-shadow: 0 6px 16px rgba(11, 23, 54, 0.22);
+    }
+
+    .nav-tab.active .tab-accent {
+      color: var(--gold-400);
+    }
+
+    .content-area {
+      padding: 10px 16px 28px;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .service-btn {
+      border: 1.5px solid var(--slate-200);
+      background: var(--slate-50);
+      border-radius: var(--radius-md);
+      padding: 12px 10px;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: none;
+    }
+
+    .service-btn .s-icon {
+      font-size: 22px;
+    }
+
+    .service-btn .s-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy-900);
+    }
+
+    .service-btn .s-desc {
+      font-size: 11px;
+      color: var(--slate-600);
+    }
+
+    .service-btn.selected {
+      background: linear-gradient(135deg, rgba(11, 23, 54, 0.04), rgba(45, 212, 191, 0.12));
+      border-color: var(--navy-800);
+      box-shadow: 0 4px 12px rgba(11, 23, 54, 0.1);
+    }
+
+    .field-group {
+      margin-bottom: 12px;
+    }
+
+    .field-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 6px;
+    }
+
+    .input-control, .textarea-control {
+      width: 100%;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      padding: 11px 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 13.5px;
+      color: var(--slate-800);
+      background: var(--white);
+      transition: none;
+    }
+
+    .input-control:focus, .textarea-control:focus {
+      outline: none;
+      border-color: var(--navy-800);
+      box-shadow: 0 0 0 3px rgba(17, 34, 77, 0.08);
+    }
+
+    .textarea-control {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    .gps-btn {
+      background: rgba(20, 184, 166, 0.12);
+      color: #0f766e;
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gps-btn:hover {
+      background: rgba(20, 184, 166, 0.22);
+    }
+
+    .gps-status {
+      font-size: 11.5px;
+      color: #0f766e;
+      margin-top: 5px;
+      font-weight: 700;
+      word-break: break-all;
+    }
+
+    .agree-box {
+      background: var(--gold-100);
+      border: 1px solid rgba(229, 169, 40, 0.45);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #785207;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.28);
+      transition: none;
+    }
+
+    .primary-btn:active {
+      transform: scale(0.985);
+    }
+
+    .navy-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .secondary-btn {
+      background: var(--slate-100);
+      color: var(--navy-900);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tracker-card {
+      border: 1.5px solid rgba(20, 184, 166, 0.45);
+      background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);
+    }
+
+    .tracker-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    .step-item {
+      text-align: center;
+      padding: 8px 4px;
+      border-radius: 10px;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--slate-600);
+      cursor: pointer;
+    }
+
+    .step-item .step-ico {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .step-item.active {
+      background: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    .step-item.active .step-ico {
+      color: var(--gold-400);
+    }
+
+    .lock-box {
+      text-align: center;
+      padding: 12px 4px;
+    }
+
+    .lock-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      background: rgba(11, 23, 54, 0.08);
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .pin-row {
+      display: flex;
+      gap: 8px;
+      max-width: 240px;
+      margin: 12px auto;
+    }
+
+    .pin-input {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 6px;
+    }
+
+    .toggle-availability {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .switch-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      color: var(--white);
+      background: var(--green-500);
+    }
+
+    .switch-btn.busy {
+      background: var(--red-500);
+    }
+
+    .reply-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 11px;
+      margin-bottom: 10px;
+    }
+
+    .reply-text {
+      font-size: 12.5px;
+      color: var(--slate-800);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .order-log-item {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 11px;
+      margin-bottom: 9px;
+      font-size: 12.5px;
+    }
+
+    .order-log-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .badge-tag {
+      background: rgba(246, 196, 83, 0.25);
+      color: #855a04;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--navy-950);
+      color: var(--white);
+      border: 1px solid var(--gold-400);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 800;
+      z-index: 999;
+      opacity: 0;
+      transition: none;
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--slate-600);
+      padding: 6px 16px 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-header">
+      <div class="brand-row">
+        <div class="brand-identity">
+          <div class="moto-badge" aria-hidden="true">🛵</div>
+          <div>
+            <h1 class="brand-title">كابتن <span>شنودة شهدي</span></h1>
+            <div class="brand-subtitle">
+              <span>توصيل سريع بالموتوسيكل</span>
+              <span>•</span>
+              <span>تخطي الزحام</span>
+            </div>
+          </div>
+        </div>
+        <div id="headerStatusPill" class="status-pill">
+          <span class="status-dot"></span>
+          <span id="headerStatusText">متاح الآن</span>
+        </div>
+      </div>
+
+      <div class="welcome-banner">
+        <span>أهلاً بك! اطلب مشوارك أو طردك مع <strong>كابتن شنودة شهدي</strong> واتفق على السعر مباشرة.</span>
+      </div>
+    </header>
+
+    <nav class="nav-tabs" aria-label="التنقل الرئيسي">
+      <button id="tabCustomer" class="nav-tab active" onclick="switchTab('customer')">
+        <span class="tab-accent">🛵</span>
+        <span>اطلب الآن</span>
+      </button>
+      <button id="tabCaptain" class="nav-tab" onclick="switchTab('captain')">
+        <span class="tab-accent">⚙️</span>
+        <span>لوحة الكابتن</span>
+      </button>
+    </nav>
+
+    <main class="content-area">
+      <!-- واجهة العميل -->
+      <section id="viewCustomer" class="view-section active">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📦</span> اختر نوع التوصيل</div>
+            <span class="badge-tag">موتوسيكل سريع</span>
+          </div>
+
+          <div class="service-grid" id="serviceGrid">
+            <button type="button" class="service-btn selected" data-service="توصيل طلبات وأكل" onclick="selectService(this)">
+              <span class="s-icon">🍔</span>
+              <span class="s-name">توصيل طلبات وأكل</span>
+              <span class="s-desc">مطاعم، مشروبات، وطلبات جاهزة</span>
+            </button>
+
+            <button type="button" class="service-btn" data-service="مشوار سريع توصيل" onclick="selectService(this)">
+              <span class="s-icon">⚡</span>
+              <span class="s-name">مشوار سريع توصيل</span>
+              <span class="s-desc">توصيل فوري وسريع بالموتوسيكل</span>
+            </button>
+
+            <button type="button" class="service-btn" data-service="أوراق وأمانات" onclick="selectService(this)">
+              <span class="s-icon">📄</span>
+              <span class="s-name">أوراق وأمانات</span>
+              <span class="s-desc">مستندات، مفاتيح، وأمانات مهمة</span>
+            </button>
+
+            <button type="button" class="service-btn" data-service="مشتريات وسوبر ماركت" onclick="selectService(this)">
+              <span class="s-icon">🛒</span>
+              <span class="s-name">مشتريات وسوبر ماركت</span>
+              <span class="s-desc">احتياجات البيت والصيدلية</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📍</span> بيانات الاستلام والتسليم</div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="customerName">اسمك الكريم</label>
+            <input type="text" id="customerName" class="input-control" placeholder="مثال: مينا أشرف" />
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">
+              <label for="pickupLocation">مكان الاستلام (من أين؟)</label>
+              <button type="button" class="gps-btn" onclick="captureGPS('pickup')">
+                <span>🎯</span> تحديد موقعي GPS
+              </button>
+            </div>
+            <input type="text" id="pickupLocation" class="input-control" placeholder="اكتب العنوان أو اسم المكان بالتفصيل" />
+            <div id="pickupGpsInfo" class="gps-status"></div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">
+              <label for="dropoffLocation">مكان التسليم (إلى أين؟)</label>
+              <button type="button" class="gps-btn" onclick="captureGPS('dropoff')">
+                <span>📍</span> تحديد التسليم GPS
+              </button>
+            </div>
+            <input type="text" id="dropoffLocation" class="input-control" placeholder="اكتب عنوان التسليم أو العلامة المميزة" />
+            <div id="dropoffGpsInfo" class="gps-status"></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="orderDetails">تفاصيل الطلب أو ملاحظات للموتوسيكل</label>
+            <textarea id="orderDetails" class="textarea-control" placeholder="مثال: استلام طلب من مطعم كذا، أو تنبيهات مهمة للكابتن..."></textarea>
+          </div>
+
+          <div class="agree-box">
+            <span>💬</span>
+            <span>الاتفاق على السعر يتم مباشرةً بينك وبين كابتن شنودة شهدي عبر الواتساب قبل التحرك.</span>
+          </div>
+
+          <button type="button" class="primary-btn" onclick="sendOrderToWhatsApp()">
+            <span>🛵</span>
+            <span>اطلب كابتن شنودة الآن عبر واتساب</span>
+          </button>
+        </div>
+
+        <!-- شاشة التتبع الفورية -->
+        <div id="trackerCard" class="card tracker-card" style="display: none;">
+          <div class="card-header">
+            <div class="card-title"><span>📡</span> متابعة حالة الطلب</div>
+            <span id="trackerCode" class="badge-tag">#ORD-101</span>
+          </div>
+          <p id="trackerSummary" style="font-size: 12.5px; color: var(--slate-600); margin-bottom: 8px;"></p>
+
+          <div class="tracker-steps" id="trackerSteps">
+            <div class="step-item active" data-step="0" onclick="setTrackerStep(0)">
+              <span class="step-ico">📤</span>
+              <span>تم الإرسال</span>
+            </div>
+            <div class="step-item" data-step="1" onclick="setTrackerStep(1)">
+              <span class="step-ico">🛵</span>
+              <span>في الطريق للاستلام</span>
+            </div>
+            <div class="step-item" data-step="2" onclick="setTrackerStep(2)">
+              <span class="step-ico">📦</span>
+              <span>جاري التوصيل</span>
+            </div>
+            <div class="step-item" data-step="3" onclick="setTrackerStep(3)">
+              <span class="step-ico">✅</span>
+              <span>تم التسليم</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 10px;">
+            <button type="button" class="secondary-btn" style="flex: 1;" onclick="reopenWhatsAppOrder()">
+              <span>💬</span> إعادة فتح واتساب
+            </button>
+            <button type="button" class="secondary-btn" onclick="resetOrderForm()">
+              <span>➕</span> طلب جديد
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- لوحة تحكم الكابتن -->
+      <section id="viewCaptain" class="view-section">
+        <div id="captainLockCard" class="card">
+          <div class="lock-box">
+            <div class="lock-icon">🔐</div>
+            <h2 style="font-size: 16px; font-weight: 900; color: var(--navy-900);">لوحة تحكم كابتن شنودة شهدي</h2>
+            <p style="font-size: 12.5px; color: var(--slate-600); margin-top: 4px;">أدخل رمز المرور للوصول إلى الإعدادات والردود السريعة</p>
+
+            <div class="pin-row">
+              <input type="password" id="captainPinInput" class="input-control pin-input" maxlength="4" placeholder="••••" />
+              <button type="button" class="navy-btn" style="width: auto; padding: 0 18px;" onclick="unlockCaptainPanel()">دخول</button>
+            </div>
+            <div style="font-size: 11px; color: var(--slate-400);">لوحة خاصة بكابتن شنودة شهدي فقط — أدخل رمز الدخول</div>
+          </div>
+        </div>
+
+        <div id="captainDashboard" style="display: none;">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span>🛵</span> حالة الكابتن شنودة</div>
+              <button type="button" class="secondary-btn" onclick="lockCaptainPanel()">قفل اللوحة 🔒</button>
+            </div>
+
+            <div class="toggle-availability">
+              <div>
+                <div style="font-size: 13.5px; font-weight: 800; color: var(--navy-900);">حالة استقبال الطلبات</div>
+                <div id="availabilityHint" style="font-size: 11.5px; color: var(--slate-600);">العملاء يرون أنك متاح للتوصيل بالموتوسيكل</div>
+              </div>
+              <button id="availabilityToggleBtn" type="button" class="switch-btn" onclick="toggleAvailability()">متاح 🟢</button>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="captainPhoneInput">رقم واتساب الكابتن شنودة (بالكود الدولي)</label>
+              <div style="display: flex; gap: 8px;">
+                <input type="tel" id="captainPhoneInput" class="input-control" placeholder="مثال: 201012345678" />
+                <button type="button" class="navy-btn" style="width: auto; padding: 0 16px;" onclick="saveCaptainPhone()">حفظ</button>
+              </div>
+            </div>
+
+            <button type="button" class="secondary-btn" style="width: 100%;" onclick="shareCaptainLink()">
+              <span>📤</span> نسخ رابط مشاركة التطبيق للعملاء
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span>⚡</span> ردود واتساب جاهزة للنسخ</div>
+            </div>
+
+            <div class="reply-box">
+              <div class="reply-text" id="replyTemplate1">مساء الخير، معاك كابتن شنودة شهدي، وصلني طلبك والتوصيلة هتكون بـ [...] جنيه وجاي لك حالاً 🛵</div>
+              <button type="button" class="secondary-btn" onclick="copyText('replyTemplate1')">📋 نسخ الرد</button>
+            </div>
+
+            <div class="reply-box">
+              <div class="reply-text" id="replyTemplate2">أهلاً بحضرتك، أنا كابتن شنودة شهدي بالموتوسيكل، اتحركت بالفعل في طريقي للاستلام وهبلغك أول ما أوصل 🛵⚡</div>
+              <button type="button" class="secondary-btn" onclick="copyText('replyTemplate2')">📋 نسخ الرد</button>
+            </div>
+
+            <div class="reply-box">
+              <div class="reply-text" id="replyTemplate3">تم توصيل الطلب بنجاح بفضل الله، شرفتني يا فندم وفي أي وقت أكون في خدمتك مع كابتن شنودة شهدي 🙏🛵</div>
+              <button type="button" class="secondary-btn" onclick="copyText('replyTemplate3')">📋 نسخ الرد</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span>📋</span> سجل الطلبات الأخيرة على الجهاز</div>
+              <button type="button" class="secondary-btn" onclick="clearOrdersHistory()">مسح</button>
+            </div>
+            <div id="ordersHistoryList">
+              <div style="font-size: 12.5px; color: var(--slate-600); text-align: center; padding: 10px;">لا توجد طلبات مسجلة بعد على هذا الجهاز.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-note">
+      تطبيق <strong>كابتن شنودة شهدي</strong> • توصيل سريع بالموتوسيكل واتفاق مباشر على السعر
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const STORAGE_KEYS = {
+      PHONE: 'shenouda_moto_wa_phone_v1',
+      AVAILABLE: 'shenouda_moto_available_v1',
+      ORDERS: 'shenouda_moto_orders_v1'
+    };
+
+    const DEFAULT_PHONE = '201000000000';
+    const CAPTAIN_PIN = '1234';
+
+    let selectedService = 'توصيل طلبات وأكل';
+    let pickupGpsLink = '';
+    let dropoffGpsLink = '';
+    let lastWhatsAppUrl = '';
+    let isCaptainUnlocked = false;
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    function switchTab(tab) {
+      const isCustomer = tab === 'customer';
+      document.getElementById('tabCustomer').classList.toggle('active', isCustomer);
+      document.getElementById('tabCaptain').classList.toggle('active', !isCustomer);
+      document.getElementById('viewCustomer').classList.toggle('active', isCustomer);
+      document.getElementById('viewCaptain').classList.toggle('active', !isCustomer);
+    }
+
+    let lastSelectedTime = 0;
+    function selectService(btn) {
+      if (!btn) return;
+      const now = Date.now();
+      const nextService = btn.getAttribute('data-service') || 'توصيل طلبات وأكل';
+      if (selectedService === nextService && (now - lastSelectedTime) < 120) return;
+      lastSelectedTime = now;
+
+      const btns = document.querySelectorAll('#serviceGrid .service-btn');
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].classList.remove('selected');
+        btns[i].setAttribute('aria-pressed', 'false');
+      }
+      btn.classList.add('selected');
+      btn.setAttribute('aria-pressed', 'true');
+      selectedService = nextService;
+    }
+
+    function initServiceButtons() {
+      const buttons = document.querySelectorAll('#serviceGrid .service-btn');
+      buttons.forEach((btn, idx) => {
+        btn.type = 'button';
+        btn.disabled = false;
+        btn.style.pointerEvents = 'auto';
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        btn.setAttribute('aria-pressed', idx === 0 ? 'true' : 'false');
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          selectService(this);
+        });
+      });
+    }
+
+    function captureGPS(type) {
+      if (!navigator.geolocation) {
+        showToast('المتصفح لا يدعم تحديد الموقع GPS');
+        return;
+      }
+
+      const targetEl = document.getElementById(type === 'pickup' ? 'pickupGpsInfo' : 'dropoffGpsInfo');
+      targetEl.textContent = 'جاري تحديد الموقع عبر GPS...';
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude.toFixed(6);
+          const lng = pos.coords.longitude.toFixed(6);
+          const mapsUrl = `https://maps.google.com/?q=${lat},${lng}`;
+          if (type === 'pickup') {
+            pickupGpsLink = mapsUrl;
+          } else {
+            dropoffGpsLink = mapsUrl;
+          }
+          targetEl.textContent = `✅ تم التقاط الموقع: ${mapsUrl}`;
+          showToast('تم تحديد الموقع بنجاح');
+        },
+        () => {
+          targetEl.textContent = '⚠️ تعذر الوصول للموقع، يمكنك كتابة العنوان يدوياً بوضوح.';
+          showToast('يرجى السماح بصلاحية الموقع أو كتابة العنوان');
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    }
+
+    function getCaptainPhone() {
+      const saved = localStorage.getItem(STORAGE_KEYS.PHONE);
+      return saved && saved.trim() ? saved.trim().replace(/\D/g, '') : DEFAULT_PHONE;
+    }
+
+    function saveCaptainPhone() {
+      const raw = document.getElementById('captainPhoneInput').value.trim().replace(/\D/g, '');
+      if (raw.length < 10) {
+        showToast('أدخل رقم واتساب صحيح بكود الدولة مثل 2010...');
+        return;
+      }
+      localStorage.setItem(STORAGE_KEYS.PHONE, raw);
+      showToast('تم حفظ رقم واتساب كابتن شنودة بنجاح');
+    }
+
+    function isAvailable() {
+      const saved = localStorage.getItem(STORAGE_KEYS.AVAILABLE);
+      return saved === null ? true : saved === 'true';
+    }
+
+    function renderAvailability() {
+      const available = isAvailable();
+      const pill = document.getElementById('headerStatusPill');
+      const text = document.getElementById('headerStatusText');
+      const btn = document.getElementById('availabilityToggleBtn');
+      const hint = document.getElementById('availabilityHint');
+
+      pill.classList.toggle('busy', !available);
+      text.textContent = available ? 'متاح الآن' : 'مشغول حالياً';
+
+      if (btn) {
+        btn.classList.toggle('busy', !available);
+        btn.textContent = available ? 'متاح 🟢' : 'مشغول 🔴';
+      }
+      if (hint) {
+        hint.textContent = available
+          ? 'العملاء يرون أنك متاح للتوصيل بالموتوسيكل'
+          : 'العملاء يرون أنك مشغول حالياً في توصيلة';
+      }
+    }
+
+    function toggleAvailability() {
+      const next = !isAvailable();
+      localStorage.setItem(STORAGE_KEYS.AVAILABLE, String(next));
+      renderAvailability();
+      showToast(next ? 'تم التحديث إلى: متاح للتوصيل' : 'تم التحديث إلى: مشغول حالياً');
+    }
+
+    function unlockCaptainPanel() {
+      const pin = document.getElementById('captainPinInput').value.trim();
+      if (pin === CAPTAIN_PIN) {
+        isCaptainUnlocked = true;
+        document.getElementById('captainLockCard').style.display = 'none';
+        document.getElementById('captainDashboard').style.display = 'block';
+        document.getElementById('captainPhoneInput').value = getCaptainPhone();
+        renderOrdersHistory();
+        showToast('مرحباً بك كابتن شنودة شهدي');
+      } else {
+        showToast('رمز المرور غير صحيح، حاول مرة أخرى');
+      }
+    }
+
+    function lockCaptainPanel() {
+      isCaptainUnlocked = false;
+      document.getElementById('captainPinInput').value = '';
+      document.getElementById('captainDashboard').style.display = 'none';
+      document.getElementById('captainLockCard').style.display = 'block';
+    }
+
+    function sendOrderToWhatsApp() {
+      const name = document.getElementById('customerName').value.trim() || 'عميل كريم';
+      const pickup = document.getElementById('pickupLocation').value.trim();
+      const dropoff = document.getElementById('dropoffLocation').value.trim();
+      const details = document.getElementById('orderDetails').value.trim() || 'لا توجد ملاحظات إضافية';
+
+      if (!pickup && !pickupGpsLink) {
+        showToast('من فضلك أدخل مكان الاستلام أو حدده عبر GPS');
+        return;
+      }
+      if (!dropoff && !dropoffGpsLink) {
+        showToast('من فضلك أدخل مكان التسليم أو حدده عبر GPS');
+        return;
+      }
+
+      const phone = getCaptainPhone();
+      const orderCode = '#SHN-' + Math.floor(1000 + Math.random() * 9000);
+
+      const lines = [
+        `🛵 *طلب توصيل جديد - كابتن شنودة شهدي*`,
+        `رقم الطلب: *${orderCode}*`,
+        `نوع الخدمة: *${selectedService}*`,
+        `اسم العميل: ${name}`,
+        `📍 الاستلام: ${pickup || 'محدد عبر GPS'}`,
+        pickupGpsLink ? `رابط موقع الاستلام: ${pickupGpsLink}` : '',
+        `🏁 التسليم: ${dropoff || 'محدد عبر GPS'}`,
+        dropoffGpsLink ? `رابط موقع التسليم: ${dropoffGpsLink}` : '',
+        `📝 التفاصيل: ${details}`,
+        `💬 _مطلوب الاتفاق على سعر التوصيلة بالموتوسيكل_`
+      ].filter(Boolean);
+
+      const message = encodeURIComponent(lines.join('\n'));
+      lastWhatsAppUrl = `https://wa.me/${phone}?text=${message}`;
+
+      saveOrderToHistory({
+        code: orderCode,
+        service: selectedService,
+        customer: name,
+        pickup: pickup || 'موقع GPS',
+        dropoff: dropoff || 'موقع GPS',
+        time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+      });
+
+      document.getElementById('trackerCard').style.display = 'block';
+      document.getElementById('trackerCode').textContent = orderCode;
+      document.getElementById('trackerSummary').textContent = `${selectedService} • من: ${pickup || 'GPS'} ← إلى: ${dropoff || 'GPS'} (بانتظار تأكيد السعر على واتساب)`;
+      setTrackerStep(0);
+
+      window.open(lastWhatsAppUrl, '_blank');
+      showToast('تم تجهيز الطلب وفتح واتساب كابتن شنودة');
+    }
+
+    function reopenWhatsAppOrder() {
+      if (lastWhatsAppUrl) {
+        window.open(lastWhatsAppUrl, '_blank');
+      } else {
+        showToast('لا يوجد طلب حالي لإعادة فتحه');
+      }
+    }
+
+    function setTrackerStep(stepIndex) {
+      document.querySelectorAll('#trackerSteps .step-item').forEach((el, idx) => {
+        el.classList.toggle('active', idx <= stepIndex);
+      });
+    }
+
+    function resetOrderForm() {
+      document.getElementById('customerName').value = '';
+      document.getElementById('pickupLocation').value = '';
+      document.getElementById('dropoffLocation').value = '';
+      document.getElementById('orderDetails').value = '';
+      document.getElementById('pickupGpsInfo').textContent = '';
+      document.getElementById('dropoffGpsInfo').textContent = '';
+      pickupGpsLink = '';
+      dropoffGpsLink = '';
+      document.getElementById('trackerCard').style.display = 'none';
+      showToast('جاهز لطلب جديد');
+    }
+
+    function saveOrderToHistory(order) {
+      const existing = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS) || '[]');
+      existing.unshift(order);
+      localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(existing.slice(0, 15)));
+      if (isCaptainUnlocked) {
+        renderOrdersHistory();
+      }
+    }
+
+    function renderOrdersHistory() {
+      const listEl = document.getElementById('ordersHistoryList');
+      const orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS) || '[]');
+      if (!orders.length) {
+        listEl.innerHTML = '<div style="font-size: 12.5px; color: var(--slate-600); text-align: center; padding: 10px;">لا توجد طلبات مسجلة بعد على هذا الجهاز.</div>';
+        return;
+      }
+
+      listEl.innerHTML = orders.map(o => `
+        <div class="order-log-item">
+          <div class="order-log-top">
+            <span>${o.code} • ${o.service}</span>
+            <span>${o.time}</span>
+          </div>
+          <div>العميل: <strong>${o.customer}</strong></div>
+          <div style="color: var(--slate-600); margin-top: 2px;">${o.pickup} ← ${o.dropoff}</div>
+        </div>
+      `).join('');
+    }
+
+    function clearOrdersHistory() {
+      localStorage.removeItem(STORAGE_KEYS.ORDERS);
+      renderOrdersHistory();
+      showToast('تم مسح سجل الطلبات');
+    }
+
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).textContent.trim();
+      navigator.clipboard.writeText(text).then(
+        () => showToast('تم نسخ الرد الجاهز'),
+        () => showToast('تعذر النسخ التلقائي')
+      );
+    }
+
+    function shareCaptainLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(
+        () => showToast('تم نسخ رابط التطبيق للمشاركة'),
+        () => showToast(url)
+      );
+    }
+
+    initServiceButtons();
+    renderAvailability();
+
+    (function setupInstantNavigation() {
+      const grid = document.getElementById('serviceGrid');
+      if (grid) {
+        grid.addEventListener('pointerdown', function(e) {
+          const btn = e.target.closest('.service-btn');
+          if (!btn) return;
+          e.preventDefault();
+          selectService(btn);
+        }, { passive: false });
+
+        grid.addEventListener('click', function(e) {
+          const btn = e.target.closest('.service-btn');
+          if (!btn) return;
+          e.preventDefault();
+          selectService(btn);
+        });
+      }
+
+      const tabCust = document.getElementById('tabCustomer');
+      const tabCap = document.getElementById('tabCaptain');
+      if (tabCust) {
+        tabCust.addEventListener('pointerdown', function(e) {
+          e.preventDefault();
+          switchTab('customer');
+        }, { passive: false });
+      }
+      if (tabCap) {
+        tabCap.addEventListener('pointerdown', function(e) {
+          e.preventDefault();
+          switchTab('captain');
+        }, { passive: false });
+      }
+    })();
+
+  </script>
+</body>
+</html>
